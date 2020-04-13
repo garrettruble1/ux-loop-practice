@@ -53,6 +53,14 @@ for (let a of arr) {
 
 function addExerciseToRoutine(routine, exercise, numRepetitions) {
     // Your Code Here!
+
+    let reps = numRepetitions;
+
+    while (reps > 0) {
+        routine.push(exercise);
+        reps = reps - 1;
+    }
+    
 }
 
 /* 
@@ -104,6 +112,15 @@ function doAction(action) {
 
 function performRoutine(routine) {
     // Your Code Here!
+
+    let index = 0;
+
+        while (index < routine.length) {
+            
+            let exercise = routine[index];
+            doAction(exercise);
+            index = index + 1;
+        }
 }
 
 /* 
@@ -145,6 +162,19 @@ console.log(compareArray(routineTwo, actionsPerformed));
 function countRepsOfActionInRoutine(routine, action) {
     let count = 0;
     // Your Code Here!
+
+    let index = 0;
+
+    while (index < routine.length) {
+
+        if (routine[index] === action) {
+            count = count + 1;
+        }
+
+        index = index + 1;
+
+    }
+
     return count;
 }
 
@@ -198,6 +228,14 @@ console.log(countRepsOfActionInRoutine(routineThree, "crunch") == 0);
 
 function removeExerciseFromRoutine(routine, exercise) {
     // Your Code Here!
+
+    while (routine.indexOf(exercise) !== -1) {
+
+        let index = routine.indexOf(exercise);
+
+        routine.splice(index, 1);
+
+    }
 }
 
 
