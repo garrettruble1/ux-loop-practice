@@ -25,6 +25,11 @@
 
 function addExerciseToRoutineForLoop(routine, exercise, numRepetitions) {
     // Your Code Here!  Use a For loop, not a for-of loop.
+
+    for (let i = 0; i < numRepetitions; i++) {
+        routine.push(exercise);
+    }
+
 }
 
 /* 
@@ -64,6 +69,19 @@ function findMinimumAndMaximum(schedule) {
     let min = Number.POSITIVE_INFINITY;
     let max = 0;
     // Your Code Here!
+
+    for (let i = 0; i < schedule.length; i++) {
+
+        if (schedule[i] > max) {
+            max = schedule[i];
+        }
+
+        if (schedule[i] < min ) {
+            min = schedule[i];
+        }
+
+    }
+
     return [min, max];
 }
 
@@ -134,8 +152,22 @@ console.log(result[0] == 0 && result[1] == 10);
 function convertRoutineFromNewFormat(routineString) {
     let routine = [];
     // Your Code Here!
+    let firstSplit = routineString.split("|");
+
+    for (let exercise of firstSplit) {
+
+        let secondSplit = exercise.split(":");
+        let reps = secondSplit[0]
+        let action = secondSplit[1]
+
+        for (i = 0; i < reps; i++) {
+            routine.push(action);
+            }
+
+    }
     return routine;
 }
+
 
 /* 
    -------TESTS----------------------------------------------------------------
@@ -203,6 +235,38 @@ console.log(compareArray(routineThree, [
 function calculateRoutineDifficulty(routine) {
     let difficulty = "";
     // Your Code Here!
+
+    let sum = 0;
+
+    for (let i = 0; i < routine.length; i++) {
+
+
+        if (routine[i] === "situp") {
+            sum = sum + 1;
+        }
+
+        if (routine[i] === "legraise") {
+            sum = sum + 2;
+        }
+
+        if (routine[i] === "pushup") {
+            sum = sum + 4;
+        }
+
+        if (routine[i] === "pullup") {
+            sum = sum + 10;
+        }
+
+    }
+
+    if (sum < 30) {
+        difficulty = "Easy";
+    } else if (sum < 60) {
+        difficulty = "Hard";
+    } else if (sum >= 60) {
+        difficulty = "Insane";
+    }
+
     return difficulty;
 }
 
